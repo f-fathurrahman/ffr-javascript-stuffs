@@ -1,0 +1,71 @@
+<html>
+  <meta charset="utf-8">
+  <head>
+    <title>Arabic transliteration</title>
+  </head>
+  <body>
+    
+    <h1>Arabic transliteration tool</h1>
+
+    <em>Reference: <a href="https://www.qamus.org/transliteration.htm">qamus.org/transliteration.htm</a></em>
+
+    <div>
+      <table style="padding: 20">
+
+	<tr>
+	  <td><span style="font-size:140%;">Buckwalter</span></td>&nbsp;&nbsp;</td>
+	  <td>
+	    <input id="bwEdit" style="font-size:160%; width: 1200px" data-bind="visible: bwEditing(), textInput: buckwalterEdit, hasFocus: true"></input>
+	    <input id="bwView" style="color: gray; font-size:160%; width: 400px" readonly="readonly" data-bind="click: setBwEditing, visible: !bwEditing(), textInput: buckwalterView"></input>
+	  </td>
+	</tr>
+	
+    <tr>
+	  <td><span style="font-size:140%;">Arabic</span></td>
+	  <td>
+	    <input dir="rtl" id="araEdit"
+        style="line-height: 200%; font-size:160%; width: 1200px"
+        data-bind="visible: !bwEditing(), textInput: arabicEdit"></input>
+	    
+        <input dir="rtl" id="araView"
+        style="line-height: 300%; color: gray; font-size:300%; text-align: center;
+               width: 1200px; font-family: Amiri Quran;"
+        readonly="readonly"
+        data-bind="click: setAraEditing, visible: bwEditing(), textInput: arabicView"></input>
+	  
+      </td>
+    </tr>
+
+      </table>
+    </div>
+
+
+<b>Messages</b>
+    <ul data-bind="foreach: messages()">
+      <li> <span data-bind="text: $data"> </span> </li>
+    </ul>
+
+   <p class="Maptable">
+      <div>
+   	<b>Show/hide maptable</b> <input type="checkbox" data-bind="checked: showMapTable"/>
+   	<table data-bind="visible: showMapTable">
+   	  <thead>
+   	    <tr><td><b>Buckwalter</b></td><td><b>Arabic</td><td><b>Unicode</td></tr>
+   	  </thead>
+   	  <tbody data-bind="foreach: b2aObservableMap()">
+   	    <tr>
+   	      <td><span data-bind="text: $data[0]"></span></td>
+   	      <td><span data-bind="text: $data[1]"></span></td>
+	      <td><span data-bind="text: $data[2]"></span></td>
+   	    </tr>
+   	  </tbody>
+   	</table>
+      </div>
+    </p>
+
+    <script type="text/javascript" src="./knockout-3.3.0.js"></script>
+    <script src="./buckwalter-converter.js"></script>
+    <script src="./buckwalter-gui.js"></script>
+    
+  </body>
+</html>
