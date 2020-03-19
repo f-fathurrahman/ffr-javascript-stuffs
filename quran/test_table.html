@@ -1,0 +1,50 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+  <title>Test Quran Page</title>
+</head>
+
+<body>
+
+<table>
+  
+  <tr>
+    <td><input id="input1"
+               style="font-family: monospace; width: 500px;">
+    </td>
+    <td><input id="input2"
+               style="font-family: monospace; width: 500px;">
+    </td>
+    <td><input id="input3"></td>
+    <td><input id="input4"></td>
+  </tr>
+
+  <tr>
+    <td><p dir="rtl" id="output1"
+           style="font-family: Amiri Quran; width: 500px;"></p>
+    </td>
+    <td><input dir="rtl" id="output2"
+               style="font-family: Amiri Quran; width: 500px;"
+               readonly="readonly">
+    </td>
+  </tr>
+
+
+</table>
+
+  <script src="./buckwalter-converter.js"></script>
+  <script type="text/javascript">
+    const inp1 = document.getElementById("input1");
+    const out1 = document.getElementById("output1");
+
+    inp1.addEventListener("input", updateValue);
+
+    function updateValue(e) {
+      out1.textContent = BWC.b2a(e.target.value);
+    }
+  </script>
+
+</body>
+
+</html>
