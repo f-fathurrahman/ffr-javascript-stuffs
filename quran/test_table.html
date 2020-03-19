@@ -11,22 +11,32 @@
   
   <tr>
     <td><input id="input1"
-               style="font-family: monospace; width: 500px;">
+               style="font-family: monospace; width: 250px; text-align: center;">
     </td>
     <td><input id="input2"
-               style="font-family: monospace; width: 500px;">
+               style="font-family: monospace; width: 250px; text-align: center;">
     </td>
-    <td><input id="input3"></td>
-    <td><input id="input4"></td>
+    <td><input id="input3"
+               style="font-family: monospace; width: 250px; text-align: center;">
+    </td>
+    <td><input id="input4"
+               style="font-family: monospace; width: 250px; text-align: center;">
+    </td>    
   </tr>
 
   <tr>
     <td><p dir="rtl" id="output1"
-           style="font-family: Amiri Quran; width: 500px;"></p>
+           style="font-family: Amiri Quran; font-size: 32pt; width: auto; text-align: center;"></p>
     </td>
-    <td><input dir="rtl" id="output2"
-               style="font-family: Amiri Quran; width: 500px;"
-               readonly="readonly">
+    <td><p dir="rtl" id="output2"
+           style="font-family: me_quran; font-size: 32pt; width: auto; text-align: center"></p>
+    </td>
+    <td><p dir="rtl" id="output3"
+           style="font-family: Amiri Quran; font-size: 32pt; width: auto; text-align: center"></p>
+    </td>
+    <td><p dir="rtl" id="output4"
+           style="font-family: Amiri Quran; font-size: 32pt; width: auto; text-align: center"></p>
+    </td>
     </td>
   </tr>
 
@@ -35,14 +45,31 @@
 
   <script src="./buckwalter-converter.js"></script>
   <script type="text/javascript">
+
     const inp1 = document.getElementById("input1");
     const out1 = document.getElementById("output1");
+    inp1.addEventListener("input", (e) => {
+      out1.textContent = BWC.b2a(e.target.value).output;
+    });
 
-    inp1.addEventListener("input", updateValue);
+    const inp2 = document.getElementById("input2");
+    const out2 = document.getElementById("output2");
+    inp2.addEventListener("input", (e) => {
+      out2.textContent = BWC.b2a(e.target.value).output;
+    });
 
-    function updateValue(e) {
-      out1.textContent = BWC.b2a(e.target.value);
-    }
+    const inp3 = document.getElementById("input3");
+    const out3 = document.getElementById("output3");
+    inp3.addEventListener("input", (e) => {
+      out3.textContent = BWC.b2a(e.target.value).output;
+    });
+
+    const inp4 = document.getElementById("input4");
+    const out4 = document.getElementById("output4");
+    inp4.addEventListener("input", (e) => {
+      out4.textContent = BWC.b2a(e.target.value).output;
+    });
+
   </script>
 
 </body>
